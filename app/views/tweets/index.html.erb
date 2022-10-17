@@ -1,0 +1,16 @@
+<h2> ツイート一覧 </h2>
+
+<% @tweets.each do |tweet| %>
+    <div>
+        message: <%= tweet.message %>
+        uid: <%= tweet.user.uid %>
+        <% if Like.where(tweet_id: tweet.id, user_id: @user.id).exists? %>
+            <%= link_to 'いいね削除', like_path(tweet.id), method: :delete %>
+        <% else %>
+            <%= link_to 'いいね', likes_path(tweet_id: tweet.id), method: :post %>
+        <% end %>
+    </div>
+<% end %>
+
+<p> <%= link_to '新規ツイート', new_tweet_path %> </p>
+<p> <%= link_to 'ユーザー一覧', users_path %></p>
