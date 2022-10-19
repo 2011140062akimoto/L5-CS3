@@ -10,14 +10,18 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  
   def create
-    @user = User.new(user_params)
+    @user = User.new(
+    uid: params[:user][:uid],
+    password: params[:user][:password],
+    password_confirmation: params[:user][:password_confirmation])
     if @user.save
       user_log_in @user
-      flash[:success] = '登録が完了しました'
-      redirect_to root
+      redirect_to root_path
+      flash[:danger = "{params}"
     else
+      flash[:danger] = '失敗しました'
       render 'new'
     end
   end
@@ -48,6 +52,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:uid, :password)
+    params.require(:user).permit(:uid, :password, :password_confirmation)
   end
 end

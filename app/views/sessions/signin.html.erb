@@ -1,7 +1,9 @@
 <%= form_tag '/sessions/signin', method: :post do %>
     <%= label_tag :uid, 'ユーザーID' %>
     <%= text_field_tag :uid %>
-    <%= label_tag :pass, 'パスワード' %>
-    <%= password_field_tag :pass %>
+    <%= label_tag :password, 'パスワード' %>
+    <%= password_field_tag :password %>
+    <%= label_tag :password_confirmation, 'パスワード(確認)' %>
+    <%= password_field_tag :password_confirmation %>
     <%= submit_tag 'ユーザー作成' %>
 <% end %>
