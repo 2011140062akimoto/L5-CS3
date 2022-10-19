@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def main
-    if session[:login_uid]
+    if current_user
       redirect_to '/tweets'
     else
       render 'login'
