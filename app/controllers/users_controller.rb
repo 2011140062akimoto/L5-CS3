@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     if @user.save
       user_log_in @user
       redirect_to root_path
-      flash[:danger = "{params}"
     else
       flash[:danger] = '失敗しました'
       render 'new'
